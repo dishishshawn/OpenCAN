@@ -9,10 +9,35 @@ A small CAN-to-USB adapter that connects a computer to a CAN bus for live monito
 
 ## Hardware
 
-- **MCU:** STM32 microcontroller (U1) with an external crystal (Y1)
-- **CAN transceiver:** Maxim transceiver (U3) with a 3-pin CAN header (J2)
-- **Power:** onboard voltage regulator (U2) fed from USB
-- **Host interface:** USB-A plug (P1), plus a 5-pin header (P2)
+- **MCU:** STM32G431CBT6 (U1) with an 8 MHz crystal (Y1)
+- **CAN transceiver:** MAX3051ESA+ (U3), with a jumper-selectable 120 Ω termination resistor (J1/R2) and a 3-pin CAN header (J2)
+- **Power:** REG1117-3.3 LDO (U2), USB 5 V to 3.3 V
+- **USB:** USB-A plug (P1) with TPD2E001 ESD protection on D+/D- (U4) and a TVS diode on VBUS (D1)
+- **Debug:** 5-pin SWD header (P2): SWDIO, SWCLK, 3.3 V, GND, RESET
+
+## Schematic
+
+The design is hierarchical: a top-level sheet ties together the USB/IO, microcontroller, CAN transceiver, and power sheets.
+
+**Top level**
+
+![Top-level schematic](images/schematic/Master.png)
+
+**Microcontroller**
+
+![Microcontroller schematic](images/schematic/Microcontroller.png)
+
+**CAN transceiver**
+
+![CAN transceiver schematic](images/schematic/CAN_Transceiver.png)
+
+**USB, CAN connector, and SWD header**
+
+![Input/output schematic](images/schematic/Input_Output.png)
+
+**Voltage regulator**
+
+![Voltage regulator schematic](images/schematic/Voltage_Regulator.png)
 
 ## Repository layout
 
